@@ -13,12 +13,14 @@ namespace Roslyn.Test.Performance.Utilities
             var scenarioPath = TestUtilities.GetCPCDirectoryPath();
             if (File.Exists(cpcFullPath))
             {
+                Log("Found CPC, using it for trace collection");
                 return new TraceManager(
                     cpcFullPath,
                     scenarioPath);
             }
             else
             {
+                Log("WARNING: Could not find CPC");
                 return new NoOpTraceManager();
             }
         }
