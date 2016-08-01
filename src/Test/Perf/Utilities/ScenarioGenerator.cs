@@ -74,7 +74,10 @@ namespace Roslyn.Test.Performance.Utilities
 
         public void WriteToDisk()
         {
-            File.WriteAllLines(_fullPath, _buffer);
+            //System.Console.WriteLine($"Writing scenarios.xml to {_fullPath}");
+            //File.WriteAllLines(_fullPath, _buffer);
+            System.Console.WriteLine($"Writing scenarios.xml to ./scenarios.xml");
+            File.WriteAllLines("./scenarios.xml", _buffer);
         }
 
         private void WriteToBuffer(string content)

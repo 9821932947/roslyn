@@ -76,24 +76,24 @@ namespace Roslyn.Test.Performance.Utilities
 
         public void Setup()
         {
-            ShellOutVital(_cpcPath, "/Setup /DisableArchive", workingDirectory: "");
+            ShellOutVital(_cpcPath, "/Setup /SkipClean", workingDirectory: "");
         }
 
         public void Start()
         {
-            ShellOutVital(_cpcPath, "/Start /DisableArchive", workingDirectory: "");
+            ShellOutVital(_cpcPath, "/Start /SkipClean", workingDirectory: "");
         }
 
         public void Stop()
         {
             var scenariosXmlPath = Path.Combine(GetCPCDirectoryPath(), "scenarios.xml");
             var consumptionTempResultsPath = Path.Combine(GetCPCDirectoryPath(), "ConsumptionTempResults.xml");
-            ShellOutVital(_cpcPath, $"/Stop /DisableArchive /ScenarioPath=\"{scenariosXmlPath}\" /ConsumptionTempResultsPath=\"{consumptionTempResultsPath}\"", workingDirectory: "");
+            ShellOutVital(_cpcPath, $"/Stop /SkipClean /ScenarioPath=\"{scenariosXmlPath}\" /ConsumptionTempResultsPath=\"{consumptionTempResultsPath}\"", workingDirectory: "");
         }
 
         public void Cleanup()
         {
-            ShellOutVital(_cpcPath, "/Cleanup /DisableArchive", workingDirectory: "");
+            ShellOutVital(_cpcPath, "/Cleanup /SkipClean", workingDirectory: "");
         }
 
         public void StartScenarios()
