@@ -38,7 +38,7 @@ namespace Roslyn.Test.Performance.Utilities
         /// </returns>
         public static string GetCPCDirectoryPath()
         {
-            return Environment.ExpandEnvironmentVariables(@"%SYSTEMDRIVE%\CPC");
+            return Environment.ExpandEnvironmentVariables(@"%SYSTEMDRIVE%\CPC\subdir");
         }
 
         /// <returns>
