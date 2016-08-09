@@ -42,11 +42,12 @@ namespace Roslyn.Test.Performance.Utilities
             _scenarioGenerator = new ScenarioGenerator();
         }
 
-        public bool HasWarmUpIteration => false;
+        public bool HasWarmUpIteration => true;
 
         // Cleanup the results directory and files before every run
         public void Initialize()
         {
+            /*
             var consumptionTempResultsPath = Path.Combine(GetCPCDirectoryPath(), "ConsumptionTempResults.xml");
             if (File.Exists(consumptionTempResultsPath))
             {
@@ -61,6 +62,7 @@ namespace Roslyn.Test.Performance.Utilities
                     Directory.Delete(databackDirectory, true);
                 }
             }
+            */
         }
 
         public void Setup()
