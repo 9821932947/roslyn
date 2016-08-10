@@ -21,7 +21,7 @@ def myJob = job(jobName) {
             set-strictmode -version 2.0
             \$ErrorActionPreference="Stop"
 
-            Invoke-WebRequest -Uri http://dotnetci.blob.core.windows.net/roslyn/cpc.zip -OutFile cpc.zip
+            Invoke-WebRequest -Uri http://dotnetci.blob.core.windows.net/roslyn-perf/cpc.zip -OutFile cpc.zip
             [Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem') | Out-Null
             If (Test-Path /CPC) {
                 Remove-Item -Recurse -Force C:/CPC
