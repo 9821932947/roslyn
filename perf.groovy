@@ -26,7 +26,7 @@ def myJob = job(jobName) {
             If (Test-Path /CPC) {
                 Remove-Item -Recurse -Force C:/CPC
             }
-            [IO.Compression.ZipFile]::ExtractToDirectory('cpc.zip', 'C:/CPC/')
+            [IO.Compression.ZipFile]::ExtractToDirectory('cpc.zip', 'C:/CPC/', $true)
             """)
       batchFile(""".\\cibuild.cmd /testPerfRun""")
     }
