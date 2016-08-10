@@ -23,10 +23,10 @@ def myJob = job(jobName) {
 
             Invoke-WebRequest -Uri http://dotnetci.blob.core.windows.net/roslyn-perf/cpc.zip -OutFile cpc.zip
             [Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem') | Out-Null
-            If (Test-Path /CPC) {
+            If (Test-Path C:/CPC) {
                 Remove-Item -Recurse -Force C:/CPC
             }
-            [IO.Compression.ZipFile]::ExtractToDirectory('cpc.zip', 'C:/CPC/', $true)
+            [IO.Compression.ZipFile]::ExtractToDirectory('cpc.zip', 'C:/CPC/')
             """)
       batchFile(""".\\cibuild.cmd /testPerfRun""")
     }
