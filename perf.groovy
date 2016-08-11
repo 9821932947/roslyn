@@ -27,8 +27,10 @@ def myJob = job(jobName) {
                 Remove-Item -Recurse -Force C:/CPC
             }
             [IO.Compression.ZipFile]::ExtractToDirectory('cpc.zip', 'C:/CPC/')
+            [Environment]::SetEnvironmentVariable("VS150COMNTOOLS", "C:\\Program Files (x86)\\Microsoft Visual Studio\\VS15Preview\\Common7\", "Process")
+
+            ./cibuild.cmd /testPerfRun
             """)
-      batchFile(""".\\cibuild.cmd /testPerfRun""")
     }
 
     publishers {
@@ -38,8 +40,6 @@ def myJob = job(jobName) {
                     set-variable -name LastExitCode 0
                     set-strictmode -version 2.0
                     \$ErrorActionPreference="Stop"
-
-                    set-variable -name VS150COMNTOOLS "C:\\Program Files (x86)\\Microsoft Visual Studio\\VS15Preview\\Common7\"
 
                     # If the test runner crashes and doesn't shut down CPC, CPC could fill
                     # the entire disk with ETL traces.
