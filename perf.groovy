@@ -27,7 +27,9 @@ def myJob = job(jobName) {
                 Remove-Item -Recurse -Force C:/CPC
             }
             [IO.Compression.ZipFile]::ExtractToDirectory('cpc.zip', 'C:/CPC/')
-            [Environment]::SetEnvironmentVariable("VS150COMNTOOLS", "C:\\Program Files (x86)\\Microsoft Visual Studio\\VS15Preview\\Common7\", "Process")
+
+            # Preview 4 specific
+            [Environment]::SetEnvironmentVariable("VS150COMNTOOLS", "C:\\Program Files (x86)\\Microsoft Visual Studio\\VS15Preview\\Common7\\Tools", "Process")
 
             ./cibuild.cmd /testPerfRun
             """)
@@ -47,9 +49,6 @@ def myJob = job(jobName) {
                         taskkill /F /IM CPC.exe 2>&1 | Out-Null
                     }
                     catch {}
-
-                    echo "listing cpc directory"
-                    ls /CPC
 
                     # Move all etl files to the a folder for archiving
                     echo "creating ToArchive directory"
