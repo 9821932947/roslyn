@@ -39,6 +39,8 @@ def myJob = job(jobName) {
                     set-strictmode -version 2.0
                     \$ErrorActionPreference="Stop"
 
+                    set-variable -name VS150COMNTOOLS "C:\\Program Files (x86)\\Microsoft Visual Studio\\VS15Preview\\Common7\"
+
                     # If the test runner crashes and doesn't shut down CPC, CPC could fill
                     # the entire disk with ETL traces.
                     try {
