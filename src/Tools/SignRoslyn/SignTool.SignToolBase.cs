@@ -75,8 +75,12 @@ namespace SignRoslyn
                 AppendLine(builder, depth: 0, text: @"<?xml version=""1.0"" encoding=""utf-8""?>");
                 AppendLine(builder, depth: 0, text: @"<Project xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">");
 
-                AppendLine(builder, depth: 0, text: @"<NuGetPackageRoot Condition=""'$(NuGetPackageRoot)' == ''"">$(NUGET_PACKAGES)</NuGetPackageRoot>");
-                AppendLine(builder, depth: 0, text: @"<NuGetPackageRoot Condition=""'$(NuGetPackageRoot)' == ''"">$(UserProfile)\.nuget\packages</NuGetPackageRoot>");
+
+                AppendLine(builder, depth: 0, text: @"<PropertyGroup>");
+                AppendLine(builder, depth: 1, text: @"<NuGetPackageRoot Condition=""'$(NuGetPackageRoot)' == ''"">$(NUGET_PACKAGES)</NuGetPackageRoot>");
+                AppendLine(builder, depth: 1, text: @"<NuGetPackageRoot Condition=""'$(NuGetPackageRoot)' == ''"">$(UserProfile)\.nuget\packages</NuGetPackageRoot>");
+                AppendLine(builder, depth: 0, text: @"</PropertyGroup>");
+
                 AppendLine(builder, depth: 1, text: $@"<Import Project=""$(NuGetPackageRoot)\MicroBuild.Core\0.2.0\build\MicroBuild.Core.props"" />");
                 AppendLine(builder, depth: 1, text: $@"<Import Project=""$(NuGetPackageRoot)\MicroBuild.Core\0.2.0\build\MicroBuild.Core.props"" />");
                 AppendLine(builder, depth: 1, text: $@"<Import Project=""$(NuGetPackageRoot)\MicroBuild.Core\0.2.0\build\MicroBuild.Core.targets"" />");
